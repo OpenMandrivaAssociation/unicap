@@ -61,17 +61,17 @@ autoreconf -fi
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %makeinstall_std
 
 #remove unpackaged files
-rm -f $RPM_BUILD_ROOT%{_libdir}/unicap%{lib_major}/{backends,cpi}/*.{la,a} 
+rm -f %{buildroot}%{_libdir}/unicap%{lib_major}/{backends,cpi}/*.{la,a} 
 
 %find_lang %{name}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %post -n %{lib_name} -p /sbin/ldconfig
