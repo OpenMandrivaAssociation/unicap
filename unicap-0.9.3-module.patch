@@ -1,0 +1,58 @@
+--- unicap-0.9.3/cpi/dcam/Makefile.am~	2008-06-12 17:25:05.000000000 +0200
++++ unicap-0.9.3/cpi/dcam/Makefile.am	2009-03-15 10:24:11.000000000 +0100
+@@ -12,7 +12,7 @@
+ libdcam_la_CPPFLAGS = -D@LIBRAW1394_VERSION@
+ libdcam_la_CFLAGS = -fno-strict-aliasing
+ 
+-libdcam_la_LDFLAGS = 
++libdcam_la_LDFLAGS = -avoid-version -module
+ 
+ libdcam_la_SOURCES =  \
+ 	1394util.c \
+--- unicap-0.9.3/cpi/v4l/Makefile.am~	2008-06-12 17:25:05.000000000 +0200
++++ unicap-0.9.3/cpi/v4l/Makefile.am	2009-03-15 10:25:13.000000000 +0100
+@@ -10,7 +10,7 @@
+ libcpidir = $(libdir)/unicap$(pkg_version)/cpi
+ 
+ 
+-libv4l_la_LDFLAGS = 
++libv4l_la_LDFLAGS = -avoid-version -module
+ 
+ libv4l_la_LIBADD = @PTHREAD_LIBS@ -L../../libunicap/.libs/ -lunicap
+ 
+--- unicap-0.9.3/cpi/v4l2cpi/Makefile.am~	2008-09-15 07:52:30.000000000 +0200
++++ unicap-0.9.3/cpi/v4l2cpi/Makefile.am	2009-03-15 10:24:59.000000000 +0100
+@@ -11,7 +11,7 @@
+ 
+ 
+ # need to rename v4l2 plugin to avoid name clash with libv4l2
+-libv4l2cpi_la_LDFLAGS = 
++libv4l2cpi_la_LDFLAGS = -avoid-version -module
+ 
+ libv4l2cpi_la_LIBADD = @PTHREAD_LIBS@  @LIBV4L_LIBS@ -L../../libunicap/.libs/ -lunicap
+ 
+@@ -23,4 +23,4 @@
+ 	tisuvccam.c tisuvccam.h uvcvideo.h uvc_compat.h \
+ 	tiseuvccam.c tiseuvccam.h 
+ 
+-EXTRA_DIST = v4l2_i18n_strings.h
+\ No newline at end of file
++EXTRA_DIST = v4l2_i18n_strings.h
+--- unicap-0.9.3/cpi/vid21394/Makefile.am~	2008-06-12 17:25:06.000000000 +0200
++++ unicap-0.9.3/cpi/vid21394/Makefile.am	2009-03-15 10:25:35.000000000 +0100
+@@ -9,7 +9,7 @@
+ 
+ libcpidir = $(libdir)/unicap$(pkg_version)/cpi
+ 
+-libvid21394_la_LDFLAGS = 
++libvid21394_la_LDFLAGS = -avoid-version -module
+ 
+ libvid21394_la_SOURCES = 1394util.c \
+ 			 Fcp.h \
+@@ -25,4 +25,4 @@
+ 
+ libvid21394_la_LIBADD = @LIBRAW1394_PACKAGE_LIBS@ @PTHREAD_LIBS@  -L../../libunicap/.libs/ -lunicap
+ 
+-libvid21394_la_CFLAGS = -fno-strict-aliasing
+\ No newline at end of file
++libvid21394_la_CFLAGS = -fno-strict-aliasing

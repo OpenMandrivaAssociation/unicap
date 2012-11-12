@@ -1,0 +1,36 @@
+diff -p -up unicap-0.9.1/configure.in.fixbuild unicap-0.9.1/configure.in
+--- unicap-0.9.1/configure.in.fixbuild	2008-08-29 07:18:54.000000000 +0200
++++ unicap-0.9.1/configure.in	2008-09-02 10:01:35.000000000 +0200
+@@ -257,7 +257,7 @@ if test "-DX_DISPLAY_MISSING" = "$X_CFLA
+ fi
+ # Force inclusion of the common path
+ if test "x`echo $X_LIBS | grep /usr/X11R6/lib`" = "x"; then
+-  X_LIBS="$X_LIBS -L/usr/X11R6/lib"
++  X_LIBS="$X_LIBS -L/usr/X11R6/lib -lX11"
+ fi
+ AC_SUBST(X_CFLAGS)
+ AC_SUBST(X_PRE_LIBS)
+diff -p -up unicap-0.9.1/libucil/Makefile.am.fixbuild unicap-0.9.1/libucil/Makefile.am
+--- unicap-0.9.1/libucil/Makefile.am.fixbuild	2008-09-02 09:54:31.000000000 +0200
++++ unicap-0.9.1/libucil/Makefile.am	2008-09-02 09:54:50.000000000 +0200
+@@ -14,7 +14,7 @@ pkg_headers=
+ lib_LTLIBRARIES = $(UCIL_LIB)
+ 
+ libucil_la_LDFLAGS = -version-info @lt_major@:@lt_revision@:@lt_age@
+-libucil_la_LIBADD = @GLIB_PACKAGE_LIBS@ @PANGO_PACKAGE_LIBS@ @AVCODEC_PACKAGE_LIBS@ @THEORA_PACKAGE_LIBS@ @ALSA_PACKAGE_LIBS@ @PNG_PACKAGE_LIBS@ $(top_builddir)/libunicap/libunicap.la -lm
++libucil_la_LIBADD = @GLIB_PACKAGE_LIBS@ @PANGO_PACKAGE_LIBS@ @AVCODEC_PACKAGE_LIBS@ @THEORA_PACKAGE_LIBS@ @ALSA_PACKAGE_LIBS@ @PNG_PACKAGE_LIBS@ $(PTHREAD_LIBS) $(top_builddir)/libunicap/libunicap.la -lm
+ 
+ if HAVE_AVCODEC
+ libucil_avcavi_sources=ucil_avc_avi.c ucil_avc_avi.h
+diff -p -up unicap-0.9.1/libunicapgtk/Makefile.am.fixbuild unicap-0.9.1/libunicapgtk/Makefile.am
+--- unicap-0.9.1/libunicapgtk/Makefile.am.fixbuild	2008-09-02 09:53:57.000000000 +0200
++++ unicap-0.9.1/libunicapgtk/Makefile.am	2008-09-02 09:54:21.000000000 +0200
+@@ -37,6 +37,7 @@ libunicapgtk_la_LIBADD = \
+ 			  @GTK_PACKAGE_LIBS@ \
+ 			  $(X_XV_LIBS) \
+ 			  $(X_LIBS) \
++			  $(PTHREAD_LIBS) -lm \
+ 			  -L../libunicap/.libs \
+ 			  -lunicap \
+ 			  -L../libucil/.libs \
+diff -p -up unicap-0.9.1/Makefile.am.fixbuild unicap-0.9.1/Makefile.am
