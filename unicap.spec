@@ -14,7 +14,7 @@ Patch1: unicap-0.9.3-module.patch
 Patch2: unicap-0.9.6-v4l1.patch
 License: GPLv2+
 Group: System/Libraries
-Url: http://www.unicap-imaging.org/
+Url: https://www.unicap-imaging.org/
 BuildRoot: %{_tmppath}/%{name}-%{version}-buildroot
 BuildRequires: gtk+2-devel libraw1394-devel libxv-devel
 BuildRequires: automake gtk-doc
