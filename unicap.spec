@@ -16,6 +16,9 @@ License: GPLv2+
 Group: System/Libraries
 Url: https://www.unicap-imaging.org/
 BuildRoot: %{_tmppath}/%{name}-%{version}-buildroot
+BuildRequires:	autoconf
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires: gtk+2-devel libraw1394-devel libxv-devel
 BuildRequires: automake gtk-doc
 Buildrequires: intltool
