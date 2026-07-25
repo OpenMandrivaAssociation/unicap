@@ -5,7 +5,7 @@
 Summary: Library to access different kinds of ( video ) capture devices 
 Name: unicap
 Version: 0.9.5
-Release: %mkrel 4
+Release: 5
 Source0: http://www.unicap-imaging.org/downloads/%{name}-%{version}.tar.gz
 # (fc) 0.9.1-1mdv fix undefined linking error
 Patch0: unicap-0.9.1-fixbuild.patch
